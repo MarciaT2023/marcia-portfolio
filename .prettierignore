@@ -1,0 +1,7 @@
+# Ignore artifacts
+node_modules
+coverage
+dist
+build
+vite-env.d.ts
+setupTests.ts

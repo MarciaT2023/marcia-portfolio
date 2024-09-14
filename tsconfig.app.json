@@ -18,7 +18,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": ".",                           // Allows for relative imports from base path
+    "paths": {                                // Define alias paths
+      "@components/*": ["src/components/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts"]
 }

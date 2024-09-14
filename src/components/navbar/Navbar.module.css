@@ -1,0 +1,67 @@
+/* Container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 100%; */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+/* Navbar CSS */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* width: 100%; */
+  /* z-index: 1000; */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbarBrand {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbarNav {
+  list-style: none;
+  margin-left: auto;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 1rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navLink:hover {
+  color: #f8f9fa;
+}
+
+/* Responsive Navbar Toggle */
+.navbarToggler {
+  display: none; /* Hide by default, you'll need JS to handle toggle */
+}
+
+@media (max-width: 992px) {
+  .navbarNav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbarToggler {
+    display: block;
+  }
+}
