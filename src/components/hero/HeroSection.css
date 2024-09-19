@@ -7,13 +7,13 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  filter: brightness(75%);
+  filter: brightness(90%);
   color: #fff;
 }
 
 /* Place text in the middle of the image */
 .hero-text {
-  background: rgba(0, 0, 0, 0); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -21,7 +21,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #F4F4F9;
 }
 
 .hero_title {

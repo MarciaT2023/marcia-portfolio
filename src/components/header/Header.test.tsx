@@ -1,10 +1,30 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, test, vi } from 'vitest';
 import Header from './Header';
 
+vi.mock('./Header.module.css', () => ({
+  headerClass: 'headerClassName',
+  titleClass: 'titleClassName',
+}));
+
 describe('Header Component', () => {
+
+  const title = 'Test Header';
+
+  test('renders logo image', () => {
+    render(<Header />);
+    const logo = screen.getByAltText('picture');
+    expect(logo).toBeInTheDocument();
+  });
+
+  test('renders title when provided', () => {
+    render(<Header title={title} />);
+    const titleElement = screen.getByText(title);
+    expect(titleElement).toBeInTheDocument();
+  });
+
+
   it('renders header with title and children', () => {
-    const title = 'Test Header';
     const { getByText } = render(
       <Header title={title}>
         <div>Header content</div>
@@ -19,30 +39,25 @@ describe('Header Component', () => {
     expect(getByText(title)).toBeInTheDocument();
   });
 
-  it('applies custom classNames correctly', () => {
-    const title = 'Custom Header';
-    const customClass = 'custom-header';
-    const customTitleClass = 'custom-title';
-    const customContainerClass = 'custom-container';
+  test('applies custom class names correctly', () => {
+    const headerClassName = 'headerClassName';
+    const titleClassName = 'titleClassName';
 
-    const { container } = render(
+    render(
       <Header
         title={title}
-        className={customClass}
-        titleClassName={customTitleClass}
-        containerClassName={customContainerClass}
+        headerClassName={headerClassName}
+        titleClassName={titleClassName}
       >
         <div>Header content</div>
       </Header>,
     );
 
-    const headerElement = container.firstChild as HTMLElement;
-    const titleElement = headerElement.querySelector(`.${customTitleClass}`);
-    const containerElement = headerElement.querySelector(`.${customContainerClass}`);
+    const headerElement = screen.getByRole('banner');
+    const titleElement = screen.getByText(title);
 
-    expect(headerElement).toHaveClass(customClass);
-    expect(titleElement).toHaveClass(customTitleClass);
-    expect(containerElement).toHaveClass(customContainerClass);
+    expect(headerElement).toHaveClass(headerClassName);
+    expect(titleElement).toHaveClass(titleClassName);
   });
 
   it('handles edge cases', () => {

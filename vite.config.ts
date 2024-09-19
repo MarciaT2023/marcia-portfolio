@@ -8,6 +8,11 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  css: {
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+    },
+  },
   test: {
     globals: true,
     includeSource: ['src/**/*.{js,ts}'],
