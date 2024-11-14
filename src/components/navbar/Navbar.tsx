@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './Navbar.module.css';
+import logo from '../../assets/logo.png';
 
 interface NavbarProps {
   links: { label: string; href: string }[];
@@ -12,7 +13,7 @@ const Navbar: FC<NavbarProps> = ({ links, listClassName = '', itemClassName = ''
     <nav className={styles.navbar} role="navigation" aria-label="Main Navigation">
       <div className={styles.container}>
         <a className={styles.navbarBrand} href="#">
-          Marcia
+        <img className={styles.logo} src={logo} alt="picture" />
         </a>
         <div>
           <ul className={styles.navbarNav}>

@@ -11,9 +11,9 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ children = null, title, headerClassName, titleClassName }) => {
   return (
     <header className={headerClassName ? styles[headerClassName] : undefined} role="banner">
-      {/* <div className={styles.logo}> */}
-      {/* <img className={styles.logo} src={logo} alt="picture" /> */}
-      {/* </div> */}
+      <div className={styles.logo}>
+      <img className={styles.logo} src={logo} alt="picture" />
+      </div>
       {title && <h1 className={titleClassName ? styles[titleClassName] : undefined}>{title}</h1>}
       {children}
     </header>
