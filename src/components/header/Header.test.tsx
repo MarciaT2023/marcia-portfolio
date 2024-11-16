@@ -1,83 +1,137 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it, test, vi } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
+import '@testing-library/jest-dom';
 import Header from './Header';
 
-vi.mock('./Header.module.css', () => ({
-  headerClass: 'headerClassName',
-  titleClass: 'titleClassName',
-}));
-
 describe('Header Component', () => {
+  afterEach(() => {
+    cleanup();
+  });
 
-  const title = 'Test Header';
-
-  test('renders logo image', () => {
+  it('renders without crashing', () => {
     render(<Header />);
-    const logo = screen.getByAltText('picture');
-    expect(logo).toBeInTheDocument();
-  });
-
-  test('renders title when provided', () => {
-    render(<Header title={title} />);
-    const titleElement = screen.getByText(title);
-    expect(titleElement).toBeInTheDocument();
-  });
-
-
-  it('renders header with title and children', () => {
-    const { getByText } = render(
-      <Header title={title}>
-        <div>Header content</div>
-      </Header>,
-    );
-    expect(getByText('Header content')).toBeInTheDocument();
-  });
-
-  it('handles default props', () => {
-    const title = 'Header without Children';
-    const { getByText } = render(<Header title={title} />);
-    expect(getByText(title)).toBeInTheDocument();
-  });
-
-  test('applies custom class names correctly', () => {
-    const headerClassName = 'headerClassName';
-    const titleClassName = 'titleClassName';
-
-    render(
-      <Header
-        title={title}
-        headerClassName={headerClassName}
-        titleClassName={titleClassName}
-      >
-        <div>Header content</div>
-      </Header>,
-    );
-
     const headerElement = screen.getByRole('banner');
-    const titleElement = screen.getByText(title);
-
-    expect(headerElement).toHaveClass(headerClassName);
-    expect(titleElement).toHaveClass(titleClassName);
+    expect(headerElement).toBeInTheDocument();
+    expect(headerElement).toHaveClass('header');
+    expect(headerElement.tagName).toBe('HEADER');
   });
 
-  it('handles edge cases', () => {
-    const longTitle = 'This is a very long title that might overflow';
-    const emptyChildren = null;
-
-    const { getByText } = render(<Header title={longTitle}>{emptyChildren}</Header>);
-
-    expect(getByText(longTitle)).toBeInTheDocument();
+  it.each([
+    ['Short Title'],
+    ['This is a moderately long title'],
+    ['This is a very long title that might overflow and test edge cases'],
+    [
+      "This is a very long title that should test the component's ability to handle text overflow properly without breaking the layout",
+    ],
+  ])('renders title correctly: %s', (testTitle) => {
+    render(<Header title={testTitle} />);
+    const headerElement = screen.getByRole('banner');
+    const titleElement = screen.getByText(testTitle);
+    expect(titleElement).toBeInTheDocument();
+    expect(titleElement.tagName).toBe('H1');
+    expect(titleElement).toHaveClass('title');
+    expect(headerElement).toHaveAttribute('aria-label', testTitle);
   });
 
-  it('renders header with role banner', () => {
-    const title = 'Accessible Header';
+  it('applies custom className when provided', () => {
+    const customClass = 'custom-class';
+    render(<Header className={customClass} />);
+    const headerElement = screen.getByRole('banner');
+    expect(headerElement).toHaveClass('header');
+    expect(headerElement).toHaveClass(customClass);
+  });
 
+  it('applies custom styles when provided', () => {
+    const customStyle = { backgroundColor: '#F5E5C0', padding: '100px' };
+    render(<Header style={customStyle} />);
+    const headerElement = screen.getByRole('banner');
+    expect(headerElement).toHaveStyle('background-color: #F5E5C0');
+    expect(headerElement).toHaveStyle('padding: 100px');
+    expect(headerElement).toHaveClass('header');
+  });
+
+  it('renders title and children within the header element', () => {
     render(
-      <Header title={title}>
-        <div>Search Component</div>
+      <Header title="Test Header">
+        <div>Header Content</div>
       </Header>,
     );
+    const headerElement = screen.getByRole('banner');
+    const titleElement = screen.getByText('Test Header');
+    const childContent = screen.getByText('Header Content');
 
-    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(headerElement).toBeInTheDocument();
+    expect(titleElement).toBeInTheDocument();
+    expect(headerElement.tagName).toBe('HEADER');
+    expect(titleElement.tagName).toBe('H1');
+    expect(childContent).toBeInTheDocument();
+  });
+
+  it('renders child content correctly inside the header element', () => {
+    render(
+      <Header>
+        <p>Child Content</p>
+      </Header>,
+    );
+    const childElement = screen.getByText('Child Content');
+    expect(childElement).toBeInTheDocument();
+  });
+
+  it('applies the correct role when provided', () => {
+    render(<Header role="navigation" />);
+    const headerElement = screen.getByRole('navigation');
+    expect(headerElement).toBeInTheDocument();
+  });
+
+  it('renders correctly with title, children, and custom className', () => {
+    const customClass = 'custom-class';
+    const testTitle = 'Test Title';
+    render(
+      <Header title={testTitle} className={customClass}>
+        <p>Child Content</p>
+      </Header>,
+    );
+    const headerElement = screen.getByRole('banner');
+    expect(headerElement).toHaveClass(customClass);
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Child Content')).toBeInTheDocument();
+    expect(headerElement).toHaveAttribute('aria-label', testTitle);
+  });
+
+  it.each([
+    ['', 'when an empty string is passed'],
+    [' ', 'when only whitespace is passed'],
+  ])('does not render title %s%s', (testTitle) => {
+    render(<Header title={testTitle} />);
+    const headerElement = screen.getByRole('banner');
+    expect(headerElement).toBeInTheDocument();
+    expect(headerElement).not.toContainHTML('<h1>');
+  });
+
+  it('does not render the title when no title is provided', () => {
+    render(<Header />);
+    const titleElement = screen.queryByText(/Test Header/i);
+    expect(titleElement).not.toBeInTheDocument();
+  });
+
+  it('does not render children when null is passed', () => {
+    render(<Header>{null}</Header>);
+    const childContent = screen.queryByText(/child content/i);
+    expect(childContent).not.toBeInTheDocument();
+  });
+
+  it('uses default aria-label when title is not provided', () => {
+    render(<Header />);
+    const headerElement = screen.getByRole('banner');
+    expect(headerElement).toHaveAttribute('aria-label', 'Site Header');
+  });
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <Header title="Snapshot Test">
+        <div>Snapshot Content</div>
+      </Header>,
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 });

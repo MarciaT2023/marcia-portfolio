@@ -1,20 +1,19 @@
-import { FC, ReactNode } from 'react';
-import styles from './Header.module.css';
-import logo from '../../assets/logo.png';
+import { CSSProperties, FC, ReactNode } from 'react';
+import './header.css';
 
 interface HeaderProps {
   children?: ReactNode;
   title?: string;
-  headerClassName?: string;
-  titleClassName?: string;
+  className?: string;
+  style?: CSSProperties;
+  role?: string;
 }
-const Header: FC<HeaderProps> = ({ children = null, title, headerClassName, titleClassName }) => {
+
+const Header: FC<HeaderProps> = ({ children, title, className = '', style = {}, role = 'banner' }) => {
+  const composedClassName = ['header', className].filter(Boolean).join(' ');
   return (
-    <header className={headerClassName ? styles[headerClassName] : undefined} role="banner">
-      <div className={styles.logo}>
-      <img className={styles.logo} src={logo} alt="picture" />
-      </div>
-      {title && <h1 className={titleClassName ? styles[titleClassName] : undefined}>{title}</h1>}
+    <header className={composedClassName} style={style} role={role} aria-label={title || 'Site Header'}>
+      {title && <h1 className="title">{title}</h1>}
       {children}
     </header>
   );

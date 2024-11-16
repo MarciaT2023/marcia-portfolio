@@ -1,22 +1,19 @@
 import { FC, ReactNode } from 'react';
-import Typewriter from '../typewriter/Typewriter';
 import '../hero/hero.css';
 
 interface HeroProps {
-    children?: ReactNode;
-    title?: string;
-  }
-
-const Hero: FC = () => {
-    return (
-        <div className="hero-container">
-          <Typewriter className="hero-title" text="Marcia Merritt" delay={700} />
-          <div className="hero-description">
-            I am a web developer at MemSQL. My passion is building simple,
-            beautiful user experiences.<br />Check out my{' '}
-          </div>
-        </div>
-      );
+  children?: ReactNode;
+  description?: string;
+  className?: string;
 }
+
+const Hero: FC<HeroProps> = ({ description, children, className = '' }) => {
+  return (
+    <div className={`hero-container ${className}`}>
+      {children}
+      <div className="hero-description">{description}</div>
+    </div>
+  );
+};
 
 export default Hero;

@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header Component > matches snapshot 1`] = `
+<DocumentFragment>
+  <header
+    aria-label="Snapshot Test"
+    class="header"
+    role="banner"
+  >
+    <h1
+      class="title"
+    >
+      Snapshot Test
+    </h1>
+    <div>
+      Snapshot Content
+    </div>
+  </header>
+</DocumentFragment>
+`;
