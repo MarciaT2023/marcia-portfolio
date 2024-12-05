@@ -5,6 +5,7 @@ interface ListProps {
   items: { label: string; href: string }[];
   listClassName?: string;
   itemClassName?: string;
+  children?: ReactNode;
 }
 
 const List: FC<ListProps> = ({ items, itemClassName = '', listClassName = '' }) => {

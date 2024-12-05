@@ -1,0 +1,104 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background-color: #28252d; /* Ensure background color is set */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.brandName {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.contactLinks {
+  display: flex;
+  align-items: center;
+}
+
+.contactLink {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.navbarToggler {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.navbarNav {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbarNav.show {
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navItem {
+  margin: 0.5rem 0;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navLink:hover {
+  color: #f8f9fa;
+}
+
+@media (max-width: 992px) {
+  .navbarToggler {
+    display: block;
+  }
+
+  .navbarNav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbarNav.show {
+    display: flex;
+  }
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 /* h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -117,12 +119,224 @@ button:focus-visible {
   font-weight: 900;
   font-style: italic;
 }
-/* <uniquifier>: Use a unique and descriptive class name
-<weight>: Use a value from 100 to 900
 
-.montserrat-<uniquifier> {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
+*{
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+/* removing the scrollbar */
+::-webkit-scrollbar{
+  display: none;
+}
+
+/* defining some css variables */
+/*
+Warm Amber (#FF8C42) - For highlighting elements, buttons, or accent lines.
+Muted Orange (#E67E22) - For subtle background areas, headers, or hover states.
+Deep Navy (#2C3E50) - For main text, headers, or dark backgrounds to create contrast.
+Steel Gray (#4F4F4F) - For secondary text, borders, or card backgrounds.
+Slate Gray (#95A5A6) - For inputs, placeholders, or subtle borders.
+Soft Beige (#F5E5C0) - For background areas or larger sections to bring in warmth.
+ */
+
+ :root {
+  /* Primary Background Colors */
+  --color-bg: #f5e5c0; /* Soft Beige - Main page background */
+  --color-bg-accent: #34495E; /* Muted Orange - Subtle background areas, headers, or hover states */
+
+  /* Text Colors */
+  --color-text-primary: #2c3e50; /* Deep Navy - For main text and headers */
+  --color-text-secondary: #4f4f4f; /* Steel Gray - For secondary text or less prominent content */
+  --color-text-placeholder: #95a5a6; /* Slate Gray - Inputs or subtle text */
+  --color-text-warm-beige: #F5E5C0;
+
+  /* Link and Highlight Colors */
+  --color-link: #ff8c42; /* Warm Amber - Navbar links, call-to-actions */
+  --color-link-hover: #e67e22; /* Muted Orange - Hover state for links */
+  --color-highlight: #ff8c42; /* Warm Amber - For buttons, accents, or important elements */
+
+  /* Borders and Card Backgrounds */
+  --color-border: #4f4f4f; /* Steel Gray - Borders for cards, sections, or dividers */
+
+  /* Utility Colors */
+  --color-white: #ffffff; /* Pure white - Universal use for backgrounds or text */
+  --color-light-gray: #95a5a6; /* Slate Gray - For subtle borders or background tones */
+
+  /* Transitions */
+  --transition-fast: all 200ms ease;
+  --transition-default: all 400ms ease;
+
+  /* Container Widths */
+  --container-width-lg: 70%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+
+body{
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  margin: 50px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'pnum';
+  font-variant-numeric: proportional-nums;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* General Styles */
+
+.container{
+  max-width: 1080px;
+    width: var(--container-width-lg);
+    margin: 0 auto; 
+    padding: 0 40px;
+}
+
+h1, h2, h3, h4, h5{
+
+    font-weight: 500;
+}
+
+h1{
+
+    /* font-size: 2.5rem; */
+}
+
+section{
+
+    /* margin-top: 8rem; */
+     /*Having some white space around different section*/
+    
+}
+
+section > h2, section > h5{
+
+    /* text-align: center;
+    color: var(--color-light); */
+}
+
+section > h2{
+
+    /* color: var(--color-primary);
+    margin-bottom: 3rem; */
+}
+
+.text-light{
+
+    /* color: var(--color-light); */
+}
+
+a{
+  color: var(--color-link);
+  transition: var(--transition-default);
+  /* transition: 0.1s ease-in-out; */
+}
+
+a:hover{
+  color: var(--color-link-hover);
+  opacity: 0.8;
+}
+
+.btn{
+
+    width: max-content; /* fit exactly it's content */
+    display: inline-block;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+
+.btn:hover{
+
+    background: var(--color-white);
+    color: var(--color-bg);
+    border-color: transparent;
+}
+
+.btn-primary{
+
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+img{
+
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Media queries for medium devices(Tablets) */
+
+@media screen and (max-width: 1024px) {
+
+    .container{
+
+        width: var(--container-width-md);
+    }
+
+    section{
+
+        margin-top: 6rem;
+    }
+    
+}
+
+/* Media queries for small devices(Mobiles) */
+
+@media screen and (max-width: 600px) {
+
+    .container{
+
+        width: var(--container-width-sm);
+    }
+
+    section > h2{
+
+        margin-bottom: 2rem;
+    }
+    
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  #topBackground {
+    height: 500px;
+  }
+
+  .container-lg {
+    padding: 0 20px;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+}
+
+#topBackground {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 760px;
+  transform: skewY(-12deg);
+  transform-origin: 0;
+  background-color: white;
+  z-index: -999;
+}

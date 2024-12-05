@@ -1,6 +1,5 @@
 .header {
-  border: 2px solid #414233;
-  /* padding: 50px 100px 30px; */
+  /* border: 2px solid var(--color-border); */
   text-align: center;
   overflow: hidden;
 }
@@ -9,14 +8,20 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--color-bg-accent);
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); */
+  background-image: url("https://www.transparenttextures.com/patterns/groovepaper.png");
+  /* border-bottom: 1px solid #ddd; */
+  border-radius: 25px;
 }
 
 .title {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin: 0;
+  color: var(--color-text-warm-beige);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;  
   word-wrap: break-word;
   word-wrap: break-word;
   overflow-wrap: break-word;

@@ -4,6 +4,9 @@ import Header from './components/header/Header';
 import Navbar from './components/nav/Navbar';
 import Hero from './components/hero/Hero';
 import Typewriter from './components/typewriter/Typewriter';
+import AboutMe from './components/about/About';
+import Footer from './components/footer/Footer';
+import Socials from './components/socials/Socials';
 
 const links = [
   { label: 'Home', href: '/' },
@@ -18,12 +21,16 @@ const description =
 const App = () => {
   return (
     <div className="container">
-      <Header>
-        <Navbar links={links} />
-      </Header>
-      <Hero description={description}>
-        <Typewriter className="hero-title" text="Marcia Merritt" delay={500} />
+      <div id='top'>
+      {/* <Header> */}
+        {/* <Navbar links={links} /> */}
+        <Hero description={description}>
+        <Typewriter className="hero-title" text="Marcia T. Merritt" delay={500} />
       </Hero>
+      {/* </Header> */}
+      </div>
+      {/* <AboutMe /> */}
+      <Footer links={links} text='Marcia T. Merritt. All Rights Reserved.'/>
     </div>
   );
 };

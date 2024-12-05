@@ -6,7 +6,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
@@ -23,8 +22,10 @@
 
     "baseUrl": ".",                           // Allows for relative imports from base path
     "paths": {                                // Define alias paths
-      "@components/*": ["src/components/*"]
-    }
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+    },
+    "types": ["vite/client"]
   },
   "include": ["src", ".eslintrc.cjs", "vite.config.ts"]
 }

@@ -1,3 +1,6 @@
+.env
+
+
 # binaries
 bin/
 dist/
@@ -10,7 +13,9 @@ lib/
 logs
 **/*.backup.*
 **/*.back.*
+*.local
 
+src/*/__snapshots__/
 node_modules
 build/
 coverage/
@@ -20,6 +25,7 @@ jsdoc/
 .tsbuildinfo
 
 ### VisualStudioCode ###
+.idea/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

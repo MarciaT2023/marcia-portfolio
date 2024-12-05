@@ -1,0 +1,102 @@
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px; /* Reduce font size slightly for compactness */
+    /* line-height: 1.5; */
+    /* background-color: var(--color-bg-accent); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); */
+  /* background-image: url("https://www.transparenttextures.com/patterns/groovepaper.png"); */
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px; /* Add spacing for smaller screens */
+  }
+  
+  .footer-info {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer-name {
+    font-size: 0.9rem; /* Slightly reduce size for compactness */
+    margin-bottom: 5px;
+  }
+  
+  .footer-socials {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-socials a {
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .footer-socials a:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-contact {
+    flex: 1;
+    max-width: 300px;
+    min-width: 250px;
+    margin-left: auto;
+  }
+  
+  .footer-contact h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-input,
+  .footer-textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+  
+  .footer-textarea {
+    resize: vertical;
+  }
+  
+  .footer-button {
+    width: 100%; /* Make the button full-width */
+    padding: 8px;
+    font-size: 0.9rem;
+    border: none;
+    background-color: #007BFF; /* Button color */
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-button:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px; /* Adjust spacing for compactness */
+  }
+  
+  .back-to-top {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .back-to-top:hover {
+    text-decoration: underline;
+  }
+  

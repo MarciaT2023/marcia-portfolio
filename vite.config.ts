@@ -1,12 +1,19 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import * as path from 'path';
 
 export default defineConfig({
-  base: '/', //sets the base to root
+  base: '/',
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, '.src/components'),
+      '@utils': path.resolve(__dirname, '.src/utils'),
+    }
+  },
   server: {
-    port: 3000,
+    port: parseInt(import.meta.env.VITE_PORT || '5173'),
   },
   css: {
     modules: {
